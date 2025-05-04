@@ -7,9 +7,11 @@ axios.get(urlpai)
   .then(resp => {
     const dadoshtml = resp.data;
     const $ = cheerio.load(dadoshtml);
+    const noticias = []
     $('a.summary.url')
       .each((i, e) => {
         const link = $(e).attr('href')
-        console.log(link)
+        noticias.push(link)
       });
+    console.log(noticias)
   })
